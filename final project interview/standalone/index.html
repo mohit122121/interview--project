@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohit Raj Interview Prep — BTech CSE Session (Standalone)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+<style>
+:root {
+  --ink: #10161f;
+  --panel: #17222e;
+  --panel-line: #29394a;
+  --chalk: #ece8de;
+  --chalk-dim: #93a1ac;
+  --amber: #e3a542;
+  --teal: #4fa89d;
+  --rust: #c1584a;
+}
+[data-theme="light"] {
+  --ink: #f4f1ea;
+  --panel: #ffffff;
+  --panel-line: #ddd6c7;
+  --chalk: #211c14;
+  --chalk-dim: #6b6558;
+  --amber: #b9762a;
+  --teal: #2f7d73;
+  --rust: #a8402f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ink); color: var(--chalk); font-family: "IBM Plex Sans", sans-serif; transition: background .2s ease, color .2s ease; }
+.app-shell { min-height: 100vh; padding: 32px 20px 60px; }
+.shell-inner { max-width: 880px; margin: 0 auto; }
+.display { font-family: "Fraunces", serif; }
+.mono { font-family: "IBM Plex Mono", monospace; }
+.eyebrow { font-family: "IBM Plex Mono", monospace; letter-spacing: .18em; text-transform: uppercase; font-size: 12px; color: var(--amber); }
+.top-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.candidate-tag { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--chalk-dim); }
+.card { background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; padding: 28px; }
+.field-label { font-size: 13px; color: var(--chalk-dim); margin-top: 18px; margin-bottom: 6px; }
+.name-input { width: 100%; background: rgba(255,255,255,.03); border: 1px solid var(--panel-line); border-radius: 10px; color: var(--chalk); padding: 12px 14px; font-size: 14px; font-family: "IBM Plex Sans", sans-serif; }
+.name-input:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+.domain-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; margin-top: 12px; }
+.domain-tile { border: 1px solid var(--panel-line); border-radius: 10px; padding: 14px 16px; cursor: pointer; background: rgba(255,255,255,.02); transition: border-color .15s ease, background .15s ease; font-size: 14px; }
+.domain-tile .count { color: var(--chalk-dim); font-size: 12px; font-family: "IBM Plex Mono", monospace; }
+.domain-tile.selected { border-color: var(--teal); background: rgba(79,168,157,.12); }
+.study-link { margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; color: var(--amber); font-size: 12px; font-family: "IBM Plex Mono", monospace; cursor: pointer; padding: 0; }
+.study-link:hover { text-decoration: underline; }
+.pill-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.pill { border: 1px solid var(--panel-line); background: transparent; color: var(--chalk-dim); border-radius: 999px; padding: 7px 16px; font-size: 13px; cursor: pointer; font-family: "IBM Plex Mono", monospace; }
+.pill.active { border-color: var(--amber); color: var(--amber); background: rgba(227,165,66,.1); }
+.start-btn { margin-top: 26px; background: var(--amber); color: #1a1206; border: none; border-radius: 10px; padding: 13px 26px; font-weight: 600; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.start-btn:disabled { opacity: .5; cursor: not-allowed; }
+.hint { margin-top: 10px; font-size: 13px; color: var(--chalk-dim); }
+.offline-note { margin-top: 18px; font-size: 12px; color: var(--chalk-dim); border-top: 1px solid var(--panel-line); padding-top: 14px; }
+.session-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.timer-ring { position: relative; width: 60px; height: 60px; }
+.timer-value { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.ledger { display: flex; gap: 8px; margin-top: 30px; flex-wrap: wrap; }
+.ledger-item { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: "IBM Plex Mono", monospace; font-size: 12px; border: 1px solid var(--panel-line); color: var(--chalk-dim); }
+textarea { width: 100%; min-height: 140px; margin-top: 16px; background: rgba(255,255,255,.03); border: 1px solid var(--panel-line); border-radius: 10px; color: var(--chalk); padding: 14px; font-size: 14px; font-family: "IBM Plex Sans", sans-serif; resize: vertical; }
+textarea:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+.btn-row { display: flex; gap: 12px; margin-top: 18px; align-items: center; flex-wrap: wrap; }
+.primary-btn { background: var(--teal); color: #08201c; border: none; border-radius: 10px; padding: 11px 22px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.primary-btn:disabled { opacity: .5; cursor: not-allowed; }
+.mic-btn { border: 1px solid var(--panel-line); background: transparent; color: var(--chalk-dim); border-radius: 10px; padding: 11px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.mic-btn.on { border-color: var(--rust); color: var(--rust); }
+.feedback-box { margin-top: 20px; border-top: 1px solid var(--panel-line); padding-top: 20px; }
+.score-badge { display: inline-flex; align-items: center; gap: 8px; font-family: "IBM Plex Mono", monospace; font-size: 22px; font-weight: 600; }
+.report-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--panel-line); }
+.bar-track { background: rgba(255,255,255,.06); border-radius: 6px; height: 8px; width: 160px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; }
+a.link-reset { color: var(--chalk-dim); font-size: 13px; cursor: pointer; text-decoration: underline; }
+.history-item { border-bottom: 1px solid var(--panel-line); padding: 12px 0; display: flex; justify-content: space-between; font-size: 13px; }
+.nav-icon-btn { border: 1px solid var(--panel-line); background: transparent; color: var(--chalk-dim); border-radius: 8px; padding: 8px 10px; cursor: pointer; display: inline-flex; align-items: center; }
+.nav-icon-btn:hover { border-color: var(--amber); color: var(--amber); }
+.progress-track { width: 100%; height: 6px; background: rgba(255,255,255,.06); border-radius: 999px; overflow: hidden; margin-bottom: 18px; }
+.progress-fill { height: 100%; background: var(--amber); border-radius: 999px; transition: width .3s ease; }
+.hint-row { margin-top: 14px; }
+.hint-btn { background: transparent; border: 1px dashed var(--panel-line); color: var(--amber); border-radius: 8px; padding: 7px 12px; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.hint-box { margin-top: 10px; background: rgba(227,165,66,.08); border: 1px solid var(--panel-line); border-radius: 8px; padding: 12px 14px; font-size: 13px; color: var(--chalk-dim); }
+.camera-preview { margin-top: 16px; border: 1px solid var(--panel-line); border-radius: 10px; overflow: hidden; position: relative; max-width: 260px; }
+.camera-preview video { width: 100%; display: block; transform: scaleX(-1); }
+.camera-note { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,.55); color: #fff; font-size: 10px; padding: 4px 8px; text-align: center; }
+.subscore-row { display: flex; gap: 18px; margin-top: 14px; flex-wrap: wrap; }
+.subscore { display: flex; flex-direction: column; gap: 2px; }
+.subscore-label { font-size: 11px; color: var(--chalk-dim); font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.subscore-value { font-family: "IBM Plex Mono", monospace; font-size: 16px; font-weight: 600; }
+.score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 12px; margin: 20px 0; }
+.score-card { border: 1px solid var(--panel-line); border-radius: 10px; padding: 14px 16px; background: rgba(255,255,255,.02); }
+.score-card-label { font-size: 12px; color: var(--chalk-dim); font-family: "IBM Plex Mono", monospace; }
+.score-card-value { font-family: "IBM Plex Mono", monospace; font-size: 26px; font-weight: 600; margin-top: 4px; }
+.sw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; padding: 18px 0; border-top: 1px solid var(--panel-line); border-bottom: 1px solid var(--panel-line); }
+.sw-list { margin: 8px 0 0; padding-left: 18px; font-size: 13px; color: var(--chalk-dim); line-height: 1.7; }
+.streak-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 12px; }
+.streak-card { border: 1px solid var(--panel-line); border-radius: 10px; padding: 14px 16px; background: rgba(255,255,255,.02); display: flex; align-items: center; gap: 10px; }
+.streak-value { font-family: "IBM Plex Mono", monospace; font-size: 22px; font-weight: 600; }
+.streak-label { font-size: 11px; color: var(--chalk-dim); }
+.video-wrap { position: relative; width: 100%; padding-top: 56.25%; border-radius: 10px; overflow: hidden; border: 1px solid var(--panel-line); }
+.video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+.qa-card { border: 1px solid var(--panel-line); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; background: rgba(255,255,255,.02); }
+.qa-question { font-size: 15px; font-weight: 500; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.qa-index { color: var(--amber); }
+.difficulty-tag { margin-left: auto; font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--chalk-dim); border: 1px solid var(--panel-line); border-radius: 999px; padding: 2px 10px; }
+.qa-answer { margin-top: 10px; font-size: 14px; color: var(--chalk-dim); line-height: 1.6; }
+@media (max-width: 560px) { .sw-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef } = React;
+const { jsPDF } = window.jspdf;
+
+/* ============================================================
+   PART 1 — QUESTION BANK (100+ questions, all topics)
+   ============================================================ */
+// questionBank.js
+// A full-syllabus interview question bank for BTech CSE placement prep.
+// Structure: { "Category Name": [ { q, a, difficulty }, ... ] }
+// Add more entries any time — the app will automatically pick them up.
+
+const questionBank = {
+  Arrays: [
+    { q: "What is the time complexity of accessing an element in an array by index, and why?", a: "Array access by index is O(1) because arrays are stored in contiguous memory, so the address of any element can be calculated directly as base_address + index * element_size, without scanning the array.", difficulty: "Easy" },
+    { q: "How would you find the maximum subarray sum in an array (Kadane's Algorithm)?", a: "Kadane's algorithm keeps a running sum 'currentSum' and a 'maxSum'. At each element, currentSum = max(element, currentSum + element); maxSum = max(maxSum, currentSum). This runs in O(n) time and O(1) space by deciding at each step whether to extend the previous subarray or start fresh.", difficulty: "Medium" },
+    { q: "How do you reverse an array in place?", a: "Use two pointers, one at the start and one at the end. Swap the elements at these pointers and move the start pointer forward and the end pointer backward until they meet. This is O(n) time and O(1) extra space.", difficulty: "Easy" },
+    { q: "Explain how you would find the missing number in an array of 1 to n.", a: "Calculate the expected sum of 1 to n using n*(n+1)/2, then subtract the actual sum of the array elements. The difference is the missing number. This runs in O(n) time and O(1) space. XOR of all numbers 1..n with all array elements also works and avoids overflow.", difficulty: "Easy" },
+    { q: "What is the difference between a 1D array and a 2D array in terms of memory layout?", a: "A 1D array is a single contiguous block of memory. A 2D array is conceptually a grid, but in most languages it is still stored as contiguous memory, either row-major (rows stored one after another, used by C/C++/Java) or column-major (used by Fortran), which affects cache performance depending on traversal order.", difficulty: "Easy" },
+    { q: "How would you find the intersection of two sorted arrays efficiently?", a: "Use two pointers, one for each array. Compare the current elements: if equal, add to result and advance both; if one is smaller, advance only that pointer. This achieves O(n+m) time instead of the O(n*m) brute-force approach.", difficulty: "Medium" },
+  ],
+
+  Strings: [
+    { q: "How do you check if two strings are anagrams of each other?", a: "Count the frequency of each character in both strings using a hash map or a fixed-size array (for lowercase letters, size 26), then compare the two frequency maps. If they match, the strings are anagrams. This runs in O(n) time.", difficulty: "Easy" },
+    { q: "Explain an efficient algorithm to check if a string is a palindrome.", a: "Use two pointers starting from both ends of the string, moving toward the center and comparing characters at each step. If all pairs match, the string is a palindrome. This is O(n) time and O(1) extra space.", difficulty: "Easy" },
+    { q: "How does the KMP (Knuth-Morris-Pratt) string matching algorithm improve over the naive approach?", a: "KMP precomputes a 'longest prefix which is also a suffix' (LPS) array for the pattern, so when a mismatch occurs, it can skip re-checking characters it already knows match, avoiding backtracking in the main text. This brings the time complexity down from O(n*m) in the naive approach to O(n+m).", difficulty: "Hard" },
+    { q: "How would you find the first non-repeating character in a string?", a: "Traverse the string once and build a frequency map of each character using a hash map. Then traverse the string again in order and return the first character whose frequency is 1. This is O(n) time and O(1) space for a fixed character set.", difficulty: "Easy" },
+    { q: "How do you find the longest common prefix among an array of strings?", a: "Take the first string as a reference and compare it character by character with every other string, shrinking the prefix whenever a mismatch is found. Alternatively, sort the array and compare only the first and last strings, since the common prefix of the whole array equals the common prefix of the lexicographically smallest and largest strings.", difficulty: "Medium" },
+  ],
+
+  "Linked List": [
+    { q: "What is the difference between a singly linked list and a doubly linked list?", a: "A singly linked list node stores data and a pointer to the next node only, so traversal is possible in one direction. A doubly linked list node additionally stores a pointer to the previous node, allowing traversal in both directions at the cost of extra memory per node.", difficulty: "Easy" },
+    { q: "How do you detect a cycle in a linked list?", a: "Use Floyd's Cycle Detection algorithm (slow and fast pointers). Move the slow pointer one step and the fast pointer two steps at a time. If there is a cycle, the fast pointer will eventually meet the slow pointer; if the fast pointer reaches null, there is no cycle. This runs in O(n) time and O(1) space.", difficulty: "Medium" },
+    { q: "How would you reverse a singly linked list?", a: "Maintain three pointers: previous (starts as null), current (starts at head), and next. In each iteration, save current.next, point current.next to previous, then move previous and current one step forward. Repeat until current is null; previous is the new head. This is O(n) time and O(1) space.", difficulty: "Easy" },
+    { q: "How do you find the middle of a linked list in a single pass?", a: "Use the slow and fast pointer technique. The slow pointer moves one node at a time while the fast pointer moves two nodes at a time. When the fast pointer reaches the end, the slow pointer will be at the middle.", difficulty: "Easy" },
+    { q: "How would you merge two sorted linked lists into one sorted linked list?", a: "Use a dummy node to build the result list. Compare the heads of both lists at each step, attach the smaller node to the result, and advance that list's pointer. Once one list is exhausted, attach the remainder of the other list. This runs in O(n+m) time.", difficulty: "Medium" },
+  ],
+
+  "Stacks & Queues": [
+    { q: "What is the difference between a stack and a queue?", a: "A stack follows Last-In-First-Out (LIFO) order, so the most recently added element is removed first, like a stack of plates. A queue follows First-In-First-Out (FIFO) order, so the earliest added element is removed first, like a line of people.", difficulty: "Easy" },
+    { q: "How would you check for balanced parentheses in an expression using a stack?", a: "Traverse the expression; push every opening bracket onto a stack. On encountering a closing bracket, check if the stack top has the matching opening bracket, and if so, pop it; otherwise the expression is unbalanced. At the end, the expression is balanced only if the stack is empty.", difficulty: "Easy" },
+    { q: "How can you implement a queue using two stacks?", a: "Use an 'input' stack for enqueue operations and an 'output' stack for dequeue. To dequeue, if the output stack is empty, pop all elements from the input stack and push them onto the output stack, reversing their order, then pop from the output stack. This gives amortized O(1) time per operation.", difficulty: "Medium" },
+    { q: "What is a circular queue and why is it useful over a simple queue?", a: "A circular queue treats the underlying array as circular, so when the rear pointer reaches the end it wraps around to the beginning if space is free. This solves the problem of a simple array-based queue wasting space after several dequeue operations move the front pointer forward.", difficulty: "Medium" },
+    { q: "How do you implement a min-stack that returns the minimum element in O(1) time?", a: "Maintain a second stack alongside the main stack that tracks the current minimum. When pushing a value, also push the minimum of that value and the current top of the min-stack. When popping, pop from both stacks. This keeps track of the minimum at every state in O(1) time and O(n) extra space.", difficulty: "Medium" },
+  ],
+
+  Trees: [
+    { q: "What is the difference between a Binary Tree and a Binary Search Tree (BST)?", a: "A binary tree is any tree where each node has at most two children, with no ordering constraint. A binary search tree additionally requires that for every node, all values in the left subtree are smaller and all values in the right subtree are larger, which enables efficient O(log n) search in a balanced tree.", difficulty: "Easy" },
+    { q: "Explain the difference between inorder, preorder, and postorder traversal.", a: "Inorder traversal visits left subtree, then the node, then right subtree (gives sorted order for a BST). Preorder visits the node first, then left, then right (useful for copying a tree). Postorder visits left, then right, then the node last (useful for deleting a tree or evaluating expression trees).", difficulty: "Easy" },
+    { q: "How do you find the height of a binary tree?", a: "Recursively compute the height as 1 + max(height of left subtree, height of right subtree), with the base case that an empty node has height 0 (or -1, depending on convention). This runs in O(n) time since every node is visited once.", difficulty: "Easy" },
+    { q: "What is a balanced binary tree, and why does balance matter?", a: "A balanced binary tree is one where the height difference between the left and right subtrees of every node is at most 1 (as in an AVL tree). Balance matters because it guarantees O(log n) height, which keeps search, insert, and delete operations efficient; an unbalanced tree can degrade to O(n), behaving like a linked list.", difficulty: "Medium" },
+    { q: "How would you check if a binary tree is a valid Binary Search Tree?", a: "Recursively validate each node against a valid range (min, max). The root can be any value; when recursing into the left child, update max to the parent's value, and when recursing into the right child, update min to the parent's value. If any node's value is outside its allowed range, the tree is not a valid BST.", difficulty: "Medium" },
+    { q: "What is a Trie and where is it used?", a: "A Trie (prefix tree) is a tree structure where each node represents a character, and paths from the root represent prefixes of stored strings. It is used for autocomplete, spell checking, and IP routing, since it allows prefix-based search in O(L) time, where L is the length of the string.", difficulty: "Hard" },
+  ],
+
+  Graphs: [
+    { q: "What is the difference between BFS and DFS traversal in a graph?", a: "BFS (Breadth-First Search) explores all neighbors of a node before moving to the next level, using a queue, and is useful for finding the shortest path in an unweighted graph. DFS (Depth-First Search) explores as far as possible along one branch before backtracking, using a stack or recursion, and is useful for detecting cycles or exploring connected components.", difficulty: "Easy" },
+    { q: "How do you detect a cycle in a directed graph?", a: "Use DFS with three states for each node: unvisited, visiting (in the current recursion stack), and visited. If during DFS you reach a node that is currently in the 'visiting' state, a cycle exists. This is different from an undirected graph, where a simple visited check with a parent reference suffices.", difficulty: "Medium" },
+    { q: "Explain Dijkstra's algorithm and when it is used.", a: "Dijkstra's algorithm finds the shortest path from a source node to all other nodes in a graph with non-negative edge weights. It uses a priority queue to always expand the currently closest unvisited node, updating distances to its neighbors if a shorter path is found. It runs in O((V+E) log V) with a binary heap.", difficulty: "Medium" },
+    { q: "What is topological sorting and which type of graph supports it?", a: "Topological sorting orders the vertices of a Directed Acyclic Graph (DAG) such that for every directed edge u to v, u comes before v in the ordering. It is used in task scheduling, build systems, and course prerequisite ordering. It only makes sense for DAGs since a cycle would make a consistent order impossible.", difficulty: "Medium" },
+    { q: "What is the difference between Prim's and Kruskal's algorithm for Minimum Spanning Tree?", a: "Prim's algorithm grows the MST one vertex at a time, always adding the cheapest edge that connects a new vertex to the existing tree, and works well with adjacency matrices for dense graphs. Kruskal's algorithm sorts all edges by weight and adds them one by one using a Union-Find structure to avoid cycles, which works well for sparse graphs.", difficulty: "Hard" },
+  ],
+
+  Sorting: [
+    { q: "Compare the time complexities of Bubble Sort, Merge Sort, and Quick Sort.", a: "Bubble Sort has O(n^2) time complexity in the average and worst case, making it inefficient for large inputs. Merge Sort guarantees O(n log n) in all cases but uses O(n) extra space. Quick Sort averages O(n log n) with O(log n) space, but can degrade to O(n^2) in the worst case with a poor pivot choice, though this is rare with randomized pivots.", difficulty: "Medium" },
+    { q: "How does Merge Sort work, and why is it a stable sort?", a: "Merge Sort recursively divides the array into halves until each subarray has one element, then merges the subarrays back together in sorted order by comparing the front elements of each half. It is stable because when two elements are equal, the merge step always takes the element from the left subarray first, preserving original relative order.", difficulty: "Medium" },
+    { q: "Explain the partition step in Quick Sort.", a: "A pivot element is chosen (commonly the last element). The partition step rearranges the array so that all elements smaller than the pivot come before it and all larger elements come after it, then places the pivot in its correct sorted position. This is done using two pointers scanning the array in a single pass, giving O(n) partition time.", difficulty: "Medium" },
+    { q: "What is a stable sorting algorithm, and why does stability matter?", a: "A sorting algorithm is stable if it preserves the relative order of equal elements from the input. Stability matters when sorting records by one key while wanting to preserve a previous ordering by another key, such as sorting students by grade while keeping them alphabetically ordered within the same grade.", difficulty: "Easy" },
+    { q: "When would you prefer Counting Sort over a comparison-based sort?", a: "Counting Sort is preferred when the input consists of integers within a small, known range, since it runs in O(n+k) time (k being the range), beating the O(n log n) lower bound of comparison sorts. It is not suitable when the range k is very large compared to n, since space and time cost grows with k.", difficulty: "Medium" },
+  ],
+
+  Searching: [
+    { q: "Explain how Binary Search works and its time complexity.", a: "Binary Search works on a sorted array by repeatedly comparing the target with the middle element and eliminating half of the remaining search space depending on whether the target is smaller or larger. This gives O(log n) time complexity, much faster than the O(n) linear search, but it requires the array to be sorted.", difficulty: "Easy" },
+    { q: "How would you search in a rotated sorted array?", a: "Use a modified binary search. At each step, determine which half (left or right of mid) is properly sorted by comparing arr[low] and arr[mid]. If the target lies within the range of the sorted half, search there; otherwise search the other half. This still achieves O(log n) time.", difficulty: "Medium" },
+    { q: "What is the difference between linear search and binary search in terms of prerequisites and complexity?", a: "Linear search checks every element one by one, works on unsorted data, and takes O(n) time. Binary search requires sorted data but achieves O(log n) time by discarding half the remaining elements at each step.", difficulty: "Easy" },
+    { q: "How do you find the first and last occurrence of a target value in a sorted array with duplicates?", a: "Run binary search twice with a small modification: once to find the leftmost occurrence, by continuing to search left even after finding a match, and once to find the rightmost occurrence, by continuing to search right after a match. Both runs are O(log n), so total time remains O(log n).", difficulty: "Medium" },
+  ],
+
+  "Recursion & Backtracking": [
+    { q: "What is the difference between recursion and iteration?", a: "Recursion solves a problem by having a function call itself on smaller subproblems until reaching a base case, relying on the call stack to manage state. Iteration solves a problem using loops and explicit variables. Recursion can be more elegant for problems with a natural recursive structure (like tree traversal), but uses more memory due to the call stack, while iteration is generally more memory-efficient.", difficulty: "Easy" },
+    { q: "Explain the concept of backtracking with an example like the N-Queens problem.", a: "Backtracking explores possible solutions incrementally, and abandons ('backtracks from') a partial solution as soon as it determines it cannot lead to a valid complete solution. In N-Queens, we place queens row by row; if a placement in the current row leads to a conflict with existing queens, we don't proceed further down that path and try the next column instead, undoing the last placement.", difficulty: "Medium" },
+    { q: "How would you generate all subsets of a given set?", a: "Use backtracking: at each element, recursively explore two choices — include it in the current subset, or exclude it — and add the subset to the result once all elements have been considered. This generates all 2^n subsets in O(2^n) time.", difficulty: "Medium" },
+    { q: "What causes a 'Stack Overflow' error in recursion, and how do you avoid it?", a: "A stack overflow happens when recursive calls go too deep without reaching a base case, exhausting the memory allocated for the call stack. It can be avoided by ensuring correct base cases, limiting recursion depth, or converting the recursion to an iterative solution using an explicit stack, especially for problems with large input sizes.", difficulty: "Easy" },
+  ],
+
+  "Dynamic Programming": [
+    { q: "What is Dynamic Programming and how is it different from plain recursion?", a: "Dynamic Programming solves problems by breaking them into overlapping subproblems and storing the results of each subproblem (memoization or tabulation) so they are not recomputed. Plain recursion may recompute the same subproblem many times, leading to exponential time complexity, whereas DP brings this down to polynomial time by trading space for time.", difficulty: "Medium" },
+    { q: "Explain the difference between memoization (top-down) and tabulation (bottom-up).", a: "Memoization is a top-down approach where you write the recursive solution as usual but cache results in a lookup table so repeated calls return instantly. Tabulation is a bottom-up approach where you iteratively build up a table starting from the base cases until you reach the final answer, usually avoiding recursion overhead.", difficulty: "Medium" },
+    { q: "How would you solve the 0/1 Knapsack problem using DP?", a: "Build a 2D table dp[i][w] representing the maximum value achievable using the first i items with capacity w. For each item, you either exclude it (dp[i-1][w]) or include it if it fits (value[i] + dp[i-1][w-weight[i]]), taking the maximum of the two. The final answer is dp[n][W], and this runs in O(n*W) time.", difficulty: "Hard" },
+    { q: "Explain how you would find the Longest Common Subsequence (LCS) of two strings.", a: "Build a 2D table dp[i][j] representing the LCS length of the first i characters of string A and the first j characters of string B. If the characters match, dp[i][j] = dp[i-1][j-1] + 1; otherwise dp[i][j] = max(dp[i-1][j], dp[i][j-1]). This runs in O(n*m) time and space.", difficulty: "Hard" },
+    { q: "What is the difference between the Fibonacci sequence solved via recursion vs DP, in terms of complexity?", a: "Plain recursive Fibonacci has O(2^n) time complexity because it recomputes the same subproblems repeatedly. Using DP (memoization or a simple iterative table), each Fibonacci number is computed once, bringing the time complexity down to O(n) with O(n) or even O(1) space if only the last two values are kept.", difficulty: "Easy" },
+  ],
+
+  "Greedy Algorithms": [
+    { q: "What is a Greedy algorithm, and when does the greedy approach fail to give an optimal solution?", a: "A greedy algorithm makes the locally optimal choice at each step, hoping it leads to a globally optimal solution. It works well for problems with the 'greedy choice property' and 'optimal substructure', like Activity Selection or Huffman Coding, but fails for problems like 0/1 Knapsack, where a locally optimal choice can lead to a suboptimal overall result, requiring DP instead.", difficulty: "Medium" },
+    { q: "Explain the Activity Selection problem and how a greedy approach solves it.", a: "Given a set of activities with start and finish times, the goal is to select the maximum number of non-overlapping activities. The greedy approach sorts activities by finish time and always picks the next activity whose start time is not earlier than the finish time of the last selected activity, which is provably optimal.", difficulty: "Medium" },
+    { q: "How does Huffman Coding use a greedy strategy for data compression?", a: "Huffman Coding repeatedly picks the two nodes (characters or merged groups) with the smallest frequency, merges them into a new node with their combined frequency, and repeats until one tree remains. This greedy merging produces an optimal prefix-free binary code where more frequent characters get shorter codes.", difficulty: "Hard" },
+  ],
+
+  Hashing: [
+    { q: "How does a hash map achieve average O(1) time complexity for insertion and lookup?", a: "A hash map uses a hash function to convert a key into an index in an underlying array (bucket). If the hash function distributes keys uniformly, most buckets contain very few elements, so insertion and lookup take constant time on average. However, if many keys collide into the same bucket, performance can degrade toward O(n) in the worst case.", difficulty: "Medium" },
+    { q: "What is a hash collision, and how is it resolved?", a: "A hash collision occurs when two different keys produce the same hash index. It is commonly resolved using chaining (storing multiple entries in a linked list or tree at that index) or open addressing (probing for the next available slot, using linear, quadratic, or double hashing).", difficulty: "Medium" },
+    { q: "How would you find the first pair of numbers in an array that sum to a target value, using a hash set?", a: "Traverse the array once. For each number, check if (target - number) already exists in the hash set. If it does, you've found the pair; if not, add the current number to the set and continue. This achieves O(n) time compared to the O(n^2) brute-force approach.", difficulty: "Easy" },
+  ],
+
+  "Bit Manipulation": [
+    { q: "How do you check if a number is a power of 2 using bitwise operations?", a: "A power of 2 has exactly one bit set in its binary representation. You can check this with the expression (n > 0) && (n & (n - 1)) == 0, since subtracting 1 from a power of 2 flips all bits after the single set bit, and ANDing them together gives zero only in this case.", difficulty: "Medium" },
+    { q: "How would you count the number of set bits (1s) in the binary representation of an integer?", a: "One efficient method is Brian Kernighan's algorithm: repeatedly do n = n & (n-1), which clears the lowest set bit each time, and count how many times you can do this before n becomes 0. This runs in O(k) time, where k is the number of set bits, rather than checking all 32 bits.", difficulty: "Medium" },
+    { q: "How can you swap two numbers without using a temporary variable, using XOR?", a: "Using a = a ^ b, then b = a ^ b, then a = a ^ b swaps the two values, since XOR-ing a value with itself cancels out to zero and XOR is its own inverse. This works but is generally discouraged in modern code for readability compared to a simple temp variable swap.", difficulty: "Easy" },
+  ],
+
+  "OOP Concepts": [
+    { q: "Explain the four pillars of Object-Oriented Programming with a real example each.", a: "Encapsulation bundles data and methods together and restricts direct access (like private bank account balance accessed only via deposit/withdraw methods). Abstraction hides implementation details behind a simple interface (like a car's accelerator hiding the engine's mechanics). Inheritance lets a class reuse and extend another class's behavior (like a SavingsAccount inheriting from a base Account class). Polymorphism allows the same interface to behave differently for different object types (like a draw() method behaving differently for Circle and Square objects).", difficulty: "Easy" },
+    { q: "What is the difference between method overloading and method overriding?", a: "Method overloading occurs within the same class when multiple methods share the same name but differ in parameter type or count, resolved at compile time (compile-time polymorphism). Method overriding occurs when a subclass provides its own implementation of a method already defined in its parent class, resolved at runtime based on the actual object type (runtime polymorphism).", difficulty: "Easy" },
+    { q: "Why does Java not support multiple inheritance through classes, and how do interfaces help?", a: "Java avoids multiple class inheritance to prevent the 'Diamond Problem', where a class inherits conflicting method implementations from two parent classes with no clear resolution. Interfaces solve this by only declaring method signatures (or default methods in modern Java) without state, so a class can implement multiple interfaces without ambiguity about which implementation to use.", difficulty: "Medium" },
+    { q: "What is the difference between an abstract class and an interface?", a: "An abstract class can have both abstract methods (without implementation) and concrete methods (with implementation), plus instance variables, but a class can only extend one abstract class. An interface (traditionally) only declares method signatures with no state, and a class can implement multiple interfaces, making interfaces better for defining a contract across unrelated classes.", difficulty: "Medium" },
+    { q: "Explain constructor overloading and give an example of why it might be used.", a: "Constructor overloading means a class has multiple constructors with different parameter lists, allowing objects to be created in different ways. For example, a Rectangle class might have one constructor taking width and height, and another taking a single 'side' value to create a square, giving flexibility to the caller.", difficulty: "Easy" },
+    { q: "What is the difference between composition and inheritance, and when would you prefer one over the other?", a: "Inheritance models an 'is-a' relationship (a Dog is an Animal), while composition models a 'has-a' relationship (a Car has an Engine) by including an instance of one class inside another. Composition is generally preferred when you want to reuse functionality without being tightly coupled to a rigid class hierarchy, since it's easier to change at runtime and avoids fragile base class problems.", difficulty: "Medium" },
+  ],
+
+  DBMS: [
+    { q: "Explain normalization and why a database would be normalized up to 3NF.", a: "Normalization organizes columns and tables to reduce data redundancy and avoid update, insert, and delete anomalies. Third Normal Form (3NF) requires the table to be in 2NF and additionally have no transitive dependencies (non-key attributes depending on other non-key attributes), which keeps data consistent by ensuring facts are stored in exactly one place.", difficulty: "Medium" },
+    { q: "What is the difference between a primary key, a unique key, and a foreign key?", a: "A primary key uniquely identifies each row in a table and cannot be null. A unique key also enforces uniqueness but can allow a single null value depending on the database. A foreign key is a column (or set of columns) in one table that references the primary key of another table, enforcing referential integrity between the two.", difficulty: "Easy" },
+    { q: "Explain ACID properties with a banking transaction example.", a: "Atomicity ensures a transaction either fully completes or fully fails, so a money transfer either debits and credits both accounts or does neither. Consistency ensures the database moves from one valid state to another, keeping total balance rules intact. Isolation ensures concurrent transactions don't interfere with each other's intermediate states. Durability ensures once a transaction is committed, it survives even a system crash.", difficulty: "Medium" },
+    { q: "What is the difference between a clustered index and a non-clustered index?", a: "A clustered index determines the physical order of data rows in the table, so a table can have only one clustered index, typically on the primary key. A non-clustered index is a separate structure that stores pointers back to the actual data rows, and a table can have multiple non-clustered indexes to speed up different queries.", difficulty: "Hard" },
+    { q: "What is a deadlock in DBMS, and how can it be prevented?", a: "A deadlock occurs when two or more transactions are waiting for locks held by each other, forming a cycle with no transaction able to proceed. It can be prevented by acquiring locks in a consistent global order, using timeouts to abort long-waiting transactions, or using deadlock detection algorithms that identify and roll back one of the transactions in the cycle.", difficulty: "Medium" },
+    { q: "What is the difference between SQL's DELETE, TRUNCATE, and DROP commands?", a: "DELETE removes specific rows based on a WHERE condition (or all rows if no condition), is logged and can be rolled back, and keeps the table structure. TRUNCATE removes all rows at once, is faster since it doesn't log individual row deletions, but also keeps the table structure. DROP removes the entire table structure along with its data permanently.", difficulty: "Easy" },
+  ],
+
+  "Operating Systems": [
+    { q: "Explain the difference between a process and a thread.", a: "A process is an independent program in execution with its own memory space (code, data, heap, stack), while a thread is a lightweight unit of execution within a process that shares the process's memory space with other threads of the same process. Because threads share memory, context switching between threads is generally faster than between processes, but requires careful synchronization to avoid race conditions.", difficulty: "Easy" },
+    { q: "What is a deadlock, and what are the four necessary conditions for it to occur?", a: "A deadlock is a state where a set of processes are blocked because each is waiting for a resource held by another process in the set. The four necessary conditions are: Mutual Exclusion (resources can't be shared), Hold and Wait (a process holds resources while waiting for more), No Preemption (resources can't be forcibly taken away), and Circular Wait (a cycle of processes each waiting on the next).", difficulty: "Medium" },
+    { q: "Explain paging and how it helps solve external fragmentation.", a: "Paging divides both physical memory and logical memory into fixed-size blocks called frames and pages respectively. A process's pages can be scattered across non-contiguous frames in physical memory, with a page table mapping logical pages to physical frames. Since allocation no longer requires contiguous memory, external fragmentation (wasted gaps between allocated blocks) is eliminated, though small internal fragmentation within the last page can still occur.", difficulty: "Medium" },
+    { q: "What is the difference between preemptive and non-preemptive scheduling?", a: "In preemptive scheduling, the OS can forcibly take the CPU away from a running process to give it to another process, typically based on priority or time slice (as in Round Robin). In non-preemptive scheduling, once a process starts executing, it runs until it voluntarily releases the CPU (as in First-Come-First-Served), which can lead to poor responsiveness if a long process runs first.", difficulty: "Medium" },
+    { q: "What is a semaphore, and how does it help in process synchronization?", a: "A semaphore is a synchronization primitive that holds an integer value and supports two atomic operations: wait (decrement) and signal (increment). A binary semaphore (0 or 1) acts like a lock to ensure mutual exclusion, while a counting semaphore can manage access to a pool of multiple identical resources, blocking processes when the count reaches zero until another process signals availability.", difficulty: "Medium" },
+    { q: "What is thrashing in the context of virtual memory?", a: "Thrashing occurs when a system spends most of its time swapping pages in and out of memory (page faults) rather than executing actual processes, usually because too many processes are competing for too little physical memory. It severely degrades system performance and is typically resolved by reducing the degree of multiprogramming or increasing available RAM.", difficulty: "Hard" },
+  ],
+
+  "Computer Networks": [
+    { q: "Explain the difference between TCP and UDP, and give one real use case for each.", a: "TCP (Transmission Control Protocol) is connection-oriented, ensures reliable, ordered delivery through acknowledgments and retransmission, and is used for web browsing and file transfer where accuracy matters. UDP (User Datagram Protocol) is connectionless, faster, but doesn't guarantee delivery or order, and is used for video streaming or online gaming where speed matters more than occasional data loss.", difficulty: "Easy" },
+    { q: "Walk through what happens, step by step, when you type a URL into a browser.", a: "The browser first checks its cache and then performs a DNS lookup to resolve the domain name to an IP address. It then establishes a TCP connection with the server (including a TLS handshake for HTTPS), sends an HTTP request, and the server processes it and sends back an HTTP response. Finally, the browser parses the HTML, CSS, and JavaScript to render the page, making additional requests for embedded resources as needed.", difficulty: "Medium" },
+    { q: "What is the difference between a router and a switch?", a: "A switch operates mainly at the data link layer (Layer 2) and connects devices within the same local network, forwarding frames based on MAC addresses. A router operates at the network layer (Layer 3) and connects different networks together, forwarding packets based on IP addresses, and is what allows devices on your local network to communicate with the internet.", difficulty: "Easy" },
+    { q: "Explain the three-way handshake used to establish a TCP connection.", a: "The client sends a SYN (synchronize) packet to the server to initiate a connection. The server responds with a SYN-ACK packet, acknowledging the request and sending its own synchronization request. The client then sends an ACK packet back, completing the handshake, after which both sides can begin reliably exchanging data.", difficulty: "Medium" },
+    { q: "What is the difference between the OSI model and the TCP/IP model?", a: "The OSI model is a theoretical, 7-layer framework (Physical, Data Link, Network, Transport, Session, Presentation, Application) used mainly for teaching and conceptual understanding. The TCP/IP model is a practical, 4-layer model (Link, Internet, Transport, Application) that reflects how the actual internet protocols are implemented, combining several OSI layers together.", difficulty: "Medium" },
+    { q: "What is DNS, and why is it needed?", a: "DNS (Domain Name System) is a distributed system that translates human-readable domain names (like example.com) into IP addresses that computers use to identify each other on a network. It is needed because it would be impractical for people to remember numeric IP addresses for every website they want to visit.", difficulty: "Easy" },
+  ],
+
+  "System Design Basics": [
+    { q: "How would you design a URL shortener like bit.ly at a high level?", a: "The core idea is to map a long URL to a short, unique code, stored in a key-value database. When a user submits a URL, generate a unique short code (using a counter with base-62 encoding, or a hash), store the mapping, and return the short URL. When someone visits the short URL, look up the original URL in the database and issue an HTTP redirect. At scale, you'd add caching (like Redis) for popular links and horizontally partition the database.", difficulty: "Hard" },
+    { q: "Explain the difference between horizontal and vertical scaling.", a: "Vertical scaling means adding more resources (CPU, RAM) to a single existing server, which is simple but has a hard physical limit and creates a single point of failure. Horizontal scaling means adding more servers/machines to distribute the load, which requires load balancing and often more complex architecture, but offers much better fault tolerance and near-limitless scalability.", difficulty: "Medium" },
+    { q: "What is a load balancer, and why would a system need one?", a: "A load balancer distributes incoming network traffic across multiple backend servers, preventing any single server from becoming a bottleneck or single point of failure. It also enables horizontal scaling, allows for graceful handling of server failures by routing traffic away from unhealthy servers, and can improve response times by routing to the least busy server.", difficulty: "Medium" },
+    { q: "What is the difference between SQL and NoSQL databases, and when would you choose one over the other?", a: "SQL (relational) databases use structured tables with fixed schemas and support complex joins and ACID transactions, making them good for applications needing strong consistency, like banking systems. NoSQL databases (document, key-value, column, graph) offer flexible schemas and horizontal scalability, making them better suited for large-scale, rapidly changing, or unstructured data, like social media feeds or IoT sensor data.", difficulty: "Medium" },
+    { q: "What is caching, and what is a common cache invalidation strategy?", a: "Caching stores frequently accessed data in a fast-access layer (like memory) to reduce load on the primary database and speed up response times. A common strategy is Time-To-Live (TTL) expiration, where cached data automatically expires after a set duration, balancing data freshness against performance; write-through and cache-aside are other common patterns for keeping cache and database in sync.", difficulty: "Medium" },
+  ],
+
+  "HR / Behavioral": [
+    { q: "Tell me about yourself.", a: "A strong answer follows a brief present-past-future structure: start with your current role/year and core skills, mention a relevant past project or achievement that demonstrates those skills, and end with why you're interested in this specific role or company. Keep it under two minutes and tailor the content to the job description.", difficulty: "Easy" },
+    { q: "Tell me about a time you disagreed with a teammate. How did you resolve it?", a: "Use the STAR method (Situation, Task, Action, Result). Describe the specific disagreement briefly, explain what you were both trying to achieve, focus on the constructive steps you took (like proposing a data-driven comparison or a compromise), and end with a positive outcome or lesson learned, emphasizing collaboration over conflict.", difficulty: "Medium" },
+    { q: "Why do you want to work at this company, and where do you see yourself in three years?", a: "Research the company's products, values, and recent work beforehand, and connect specific things you admire to your own skills and goals, rather than giving a generic answer. For the three-year question, show ambition balanced with realism, focusing on growing your skills and taking on more responsibility within a related area, rather than naming an unrelated job title.", difficulty: "Easy" },
+    { q: "Describe a project you are proud of and the biggest challenge you faced building it.", a: "Pick a project with genuine technical depth, briefly explain its purpose, then focus most of your answer on one specific challenge (a bug, a design decision, a performance bottleneck), the steps you took to solve it, and what you learned. Concrete details make the story credible and memorable to an interviewer.", difficulty: "Easy" },
+    { q: "How do you handle working under pressure or tight deadlines?", a: "A good answer names a concrete strategy (like breaking work into prioritized tasks, communicating early about blockers, or timeboxing) rather than just claiming you 'work well under pressure'. Back it up with a brief real example where this approach helped you deliver on time.", difficulty: "Easy" },
+    { q: "What is your biggest weakness?", a: "Choose a real, moderate weakness (not a disguised strength like 'I work too hard'), and focus most of the answer on the concrete steps you are actively taking to improve it, such as a specific habit, course, or tool you have adopted. This shows self-awareness and a growth mindset, which is what the question is really testing.", difficulty: "Medium" },
+  ],
+};
+
+
+/* ============================================================
+   PART 2 — TOPIC -> YOUTUBE RESOURCES
+   ============================================================ */
+// topicResources.js
+// Maps each topic to a recommended YouTube video/playlist for students to study
+// before attempting that topic's practice questions.
+// type: "playlist" -> embedded as youtube.com/embed/videoseries?list=ID
+// type: "video"    -> embedded as youtube.com/embed/ID
+
+const DSA_RESOURCE = {
+  type: "playlist",
+  id: "PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ",
+  label: "Complete DSA Course",
+  watchUrl: "https://youtube.com/playlist?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ",
+};
+
+const topicResources = {
+  Arrays: DSA_RESOURCE,
+  Strings: DSA_RESOURCE,
+  "Linked List": DSA_RESOURCE,
+  "Stacks & Queues": DSA_RESOURCE,
+  Trees: DSA_RESOURCE,
+  Graphs: DSA_RESOURCE,
+  Sorting: DSA_RESOURCE,
+  Searching: DSA_RESOURCE,
+  "Recursion & Backtracking": DSA_RESOURCE,
+  "Dynamic Programming": DSA_RESOURCE,
+  "Greedy Algorithms": DSA_RESOURCE,
+  Hashing: DSA_RESOURCE,
+  "Bit Manipulation": DSA_RESOURCE,
+
+  "OOP Concepts": {
+    type: "video",
+    id: "bSrm9RXwBaI",
+    label: "OOP Concepts Explained",
+    watchUrl: "https://youtu.be/bSrm9RXwBaI",
+  },
+
+  DBMS: {
+    type: "playlist",
+    id: "PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y",
+    label: "DBMS Course — Gate Smashers",
+    watchUrl: "https://youtube.com/playlist?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y",
+  },
+
+  "Operating Systems": {
+    type: "playlist",
+    id: "PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p",
+    label: "Operating System (Complete Playlist) — Gate Smashers",
+    watchUrl: "https://www.youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p",
+  },
+
+  "Computer Networks": {
+    type: "playlist",
+    id: "PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_",
+    label: "Computer Networks (Complete Playlist) — Gate Smashers",
+    watchUrl: "https://www.youtube.com/playlist?list=PLxCzCOWd7aiGFBD2-2joCpWOLUrDLvVV_",
+  },
+};
+
+function getEmbedUrl(resource) {
+  if (!resource) return null;
+  if (resource.type === "playlist") {
+    return `https://www.youtube.com/embed/videoseries?list=${resource.id}`;
+  }
+  return `https://www.youtube.com/embed/${resource.id}`;
+}
+
+
+/* ============================================================
+   PART 3 — OFFLINE SCORER (technical / communication / confidence)
+   ============================================================ */
+// localScorer.js
+// Offline fallback scorer used when no ANTHROPIC_API_KEY is configured, or when
+// the Claude API call fails. Produces the same shape of result as the AI path:
+// technicalScore, communicationScore, confidenceScore, overall, verdict,
+// feedback, modelAnswer, strengths, weaknesses — so the UI never has to branch
+// on whether AI or offline scoring was used.
+
+const FILLERS = ["um", "uh", "like", "actually", "basically", "you know", "kind of", "sort of"];
+const HEDGES = ["maybe", "i think", "i guess", "not sure", "probably", "perhaps", "i suppose"];
+
+function tokenize(text) {
+  return (text || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 3);
+}
+
+function countOccurrences(text, phrases) {
+  const lower = (text || "").toLowerCase();
+  return phrases.reduce((count, phrase) => count + (lower.split(phrase).length - 1), 0);
+}
+
+function technicalCoverageScore(userAnswer, modelAnswer) {
+  const answerTokens = new Set(tokenize(userAnswer));
+  const modelTokens = new Set(tokenize(modelAnswer));
+  if (modelTokens.size === 0) return 5;
+  let overlap = 0;
+  modelTokens.forEach((t) => {
+    if (answerTokens.has(t)) overlap += 1;
+  });
+  const coverage = overlap / modelTokens.size;
+  return Math.max(1, Math.min(10, Math.round(coverage * 10)));
+}
+
+function communicationScore(userAnswer) {
+  const words = (userAnswer || "").trim().split(/\s+/).filter(Boolean);
+  const sentenceCount = ((userAnswer || "").match(/[.!?]/g) || []).length || (words.length > 0 ? 1 : 0);
+  let score = 5;
+  if (words.length >= 20) score += 1;
+  if (words.length >= 45) score += 1;
+  if (sentenceCount >= 2) score += 1;
+  if (sentenceCount >= 4) score += 1;
+  const fillerCount = countOccurrences(userAnswer, FILLERS);
+  score -= Math.min(3, fillerCount);
+  return Math.max(0, Math.min(10, Math.round(score)));
+}
+
+function confidenceScore(userAnswer) {
+  const hedgeCount = countOccurrences(userAnswer, HEDGES);
+  let score = 8 - hedgeCount * 1.5;
+  if (!userAnswer || userAnswer.trim().length === 0) score = 0;
+  return Math.max(0, Math.min(10, Math.round(score)));
+}
+
+function buildStrengthsWeaknesses(domain, technical, communication, confidence) {
+  const strengths = [];
+  const weaknesses = [];
+
+  if (technical >= 7) strengths.push(`Solid grasp of ${domain} fundamentals`);
+  else if (technical < 5) weaknesses.push(`Needs a deeper review of ${domain} concepts`);
+
+  if (communication >= 7) strengths.push("Clear, well-structured explanation");
+  else if (communication < 5) weaknesses.push("Answer could be more detailed and structured");
+
+  if (confidence >= 7) strengths.push("Answered with confidence, no hedging");
+  else if (confidence < 5) weaknesses.push('Sounded hesitant — avoid phrases like "maybe" or "I think"');
+
+  if (strengths.length === 0) strengths.push("Attempted the question directly");
+  if (weaknesses.length === 0) weaknesses.push("Keep practicing to build more depth");
+
+  return { strengths, weaknesses };
+}
+
+function localScore(userAnswer, modelAnswer, domain = "General") {
+  if (!userAnswer || userAnswer.trim().length === 0) {
+    return {
+      score: 0,
+      technicalScore: 0,
+      communicationScore: 0,
+      confidenceScore: 0,
+      overall: 0,
+      verdict: "Weak",
+      feedback: "No answer was submitted. Try to at least outline the key idea, even if you are unsure of the full explanation.",
+      modelAnswer,
+      strengths: [],
+      weaknesses: ["No answer was given for this question"],
+      offline: true,
+    };
+  }
+
+  const technical = technicalCoverageScore(userAnswer, modelAnswer);
+  const communication = communicationScore(userAnswer);
+  const confidence = confidenceScore(userAnswer);
+  const overall = Math.round((technical + communication + confidence) / 3);
+
+  let verdict = "Weak";
+  if (overall >= 8) verdict = "Excellent";
+  else if (overall >= 6) verdict = "Good";
+  else if (overall >= 4) verdict = "Needs Improvement";
+
+  const feedback =
+    overall >= 6
+      ? "Good coverage of the key ideas. Compare with the model answer to see if you can add more precise technical terms or a concrete example."
+      : "This answer is missing several key concepts expected here. Read the model answer closely and try re-explaining it in your own words.";
+
+  const { strengths, weaknesses } = buildStrengthsWeaknesses(domain, technical, communication, confidence);
+
+  return {
+    score: overall,
+    technicalScore: technical,
+    communicationScore: communication,
+    confidenceScore: confidence,
+    overall,
+    verdict,
+    feedback,
+    modelAnswer,
+    strengths,
+    weaknesses,
+    offline: true,
+  };
+}
+
+/* ============================================================
+   PART 4 — LOCAL HISTORY (localStorage) + ANALYTICS
+   ============================================================ */
+const HISTORY_KEY = "interviewPrepHistory";
+
+function getHistory() {
+  try {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function pushHistoryEntry(entry) {
+  const h = getHistory();
+  h.unshift(entry);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(h.slice(0, 200)));
+}
+
+function dateStr(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+function computeStreaks(dateStrings) {
+  const uniqueSorted = [...new Set(dateStrings)].sort();
+  let longest = 0, run = 0, prev = null;
+  uniqueSorted.forEach((d) => {
+    if (prev) {
+      const diffDays = Math.round((new Date(d) - new Date(prev)) / 86400000);
+      run = diffDays === 1 ? run + 1 : 1;
+    } else run = 1;
+    longest = Math.max(longest, run);
+    prev = d;
+  });
+  const set = new Set(uniqueSorted);
+  let current = 0;
+  const cursor = new Date();
+  if (!set.has(dateStr(cursor))) cursor.setDate(cursor.getDate() - 1);
+  while (set.has(dateStr(cursor))) {
+    current += 1;
+    cursor.setDate(cursor.getDate() - 1);
+  }
+  return { current, longest };
+}
+
+function computeAnalytics(history) {
+  const totalSessions = history.length;
+  const { current, longest } = computeStreaks(history.map((s) => s.timestamp.slice(0, 10)));
+  const domainTotals = {};
+  history.forEach((s) => {
+    (s.results || []).forEach((r) => {
+      const dom = r.domain || "Unknown";
+      if (!domainTotals[dom]) domainTotals[dom] = { sum: 0, count: 0 };
+      domainTotals[dom].sum += r.overall ?? r.score ?? 0;
+      domainTotals[dom].count += 1;
+    });
+  });
+  const perTopic = Object.entries(domainTotals)
+    .map(([domain, v]) => ({ domain, average: Number((v.sum / v.count).toFixed(2)), attempts: v.count }))
+    .sort((a, b) => b.average - a.average);
+  const overallAverageAllTime =
+    totalSessions > 0 ? Number((history.reduce((s, x) => s + (x.average || 0), 0) / totalSessions).toFixed(2)) : 0;
+  return { totalSessions, currentStreak: current, longestStreak: longest, overallAverageAllTime, perTopic };
+}
+
+function shuffle(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+const DURATIONS = { Easy: 60, Medium: 90, Hard: 120, Any: 90 };
+
+function verdictColor(score) {
+  if (score >= 7) return "var(--teal)";
+  if (score >= 4) return "var(--amber)";
+  return "var(--rust)";
+}
+
+/* ============================================================
+   PART 5 — UI COMPONENTS
+   ============================================================ */
+
+function Setup({
+  topics, candidateName, setCandidateName, selectedTopics, toggleTopic,
+  difficulty, setDifficulty, questionCount, setQuestionCount, loading, onStart, onOpenStudy,
+}) {
+  return (
+    <div className="card">
+      <div className="field-label">Your name (shown on the final mark sheet)</div>
+      <input className="name-input" placeholder="e.g. Mohit Raj" value={candidateName}
+        onChange={(e) => setCandidateName(e.target.value)} />
+
+      <div className="field-label" style={{ marginTop: 22 }}>Step 1 — choose your topics</div>
+      <div className="domain-grid">
+        {topics.map((t) => (
+          <div key={t.name} className={"domain-tile" + (selectedTopics.includes(t.name) ? " selected" : "")}
+            onClick={() => toggleTopic(t.name)}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <span>{t.name}</span>
+              <span className="count">{t.count} Qs</span>
+            </div>
+            <button className="study-link" onClick={(e) => { e.stopPropagation(); onOpenStudy(t.name); }}>
+              ▶ {t.hasVideo ? "Study + video" : "Study all questions"}
+            </button>
+          </div>
+        ))}
+      </div>
+
+      <div className="field-label">Step 2 — difficulty</div>
+      <div className="pill-row">
+        {["Easy", "Medium", "Hard", "Any"].map((lvl) => (
+          <button key={lvl} className={"pill" + (difficulty === lvl ? " active" : "")} onClick={() => setDifficulty(lvl)}>{lvl}</button>
+        ))}
+      </div>
+
+      <div className="field-label">Step 3 — number of questions</div>
+      <div className="pill-row">
+        {[3, 5, 8, 10].map((n) => (
+          <button key={n} className={"pill" + (questionCount === n ? " active" : "")} onClick={() => setQuestionCount(n)}>{n} questions</button>
+        ))}
+      </div>
+
+      <button className="start-btn" disabled={selectedTopics.length === 0 || loading} onClick={onStart}>
+        ✨ {loading ? "Preparing questions…" : "Start session"}
+      </button>
+      {selectedTopics.length === 0 && <div className="hint">Pick at least one topic to begin.</div>}
+
+      <div className="offline-note">
+        Standalone mode — runs 100% in your browser, no backend needed. Questions come from the
+        built-in bank and answers are scored by a local heuristic (technical / communication /
+        confidence). For real Claude-powered AI feedback, use the full backend + frontend project
+        instead of this single file.
+      </div>
+    </div>
+  );
+}
+
+function StudyTopic({ topicName, onBack }) {
+  const resource = topicResources[topicName] || null;
+  const embedUrl = resource ? getEmbedUrl(resource) : null;
+  const items = questionBank[topicName] || [];
+
+  return (
+    <div className="card">
+      <span className="link-reset" onClick={onBack} style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+        ← back to topics
+      </span>
+      <h2 className="display" style={{ fontSize: 28, margin: "14px 0 4px" }}>{topicName}</h2>
+      <div className="eyebrow" style={{ marginBottom: 18 }}>Study mode — read every question and answer, no timer</div>
+
+      {resource && (
+        <div style={{ marginBottom: 26 }}>
+          <div className="video-wrap">
+            <iframe src={embedUrl} title={resource.label} frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          </div>
+          <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: 13, color: "var(--chalk-dim)" }}>{resource.label}</span>
+            <a href={resource.watchUrl} target="_blank" rel="noreferrer" style={{ fontSize: 13, color: "var(--teal)" }}>
+              Watch on YouTube ↗
+            </a>
+          </div>
+        </div>
+      )}
+
+      <div className="eyebrow" style={{ color: "var(--chalk-dim)", marginBottom: 10 }}>All {items.length} questions in this topic</div>
+      {items.map((item, i) => (
+        <div className="qa-card" key={i}>
+          <div className="qa-question">
+            <span className="mono qa-index">Q{i + 1}.</span> {item.q}
+            {item.difficulty && <span className="difficulty-tag">{item.difficulty}</span>}
+          </div>
+          <div className="qa-answer">{item.a}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function buildHint(modelAnswer) {
+  if (!modelAnswer) return "Think about the core definition, then support it with one concrete example.";
+  const words = modelAnswer.trim().split(/\s+/);
+  const snippet = words.slice(0, 9).join(" ");
+  return snippet + (words.length > 9 ? "…" : "");
+}
+
+function Session({
+  questions, results, currentIndex, secondsLeft, duration,
+  updateAnswerText, onSubmit, onNext, speechSupported, listening, toggleListening,
+}) {
+  const current = results[currentIndex];
+  const question = questions[currentIndex];
+  const circumference = 2 * Math.PI * 26;
+  const dashOffset = circumference * (1 - secondsLeft / duration);
+  const progressPct = Math.round(((currentIndex + (current.phase === "reviewed" ? 1 : 0)) / questions.length) * 100);
+
+  const [showHint, setShowHint] = useState(false);
+  const [voiceOn, setVoiceOn] = useState(false);
+  const [cameraOn, setCameraOn] = useState(false);
+  const videoRef = useRef(null);
+  const streamRef = useRef(null);
+  const speechSynthSupported = typeof window !== "undefined" && "speechSynthesis" in window;
+
+  useEffect(() => { setShowHint(false); }, [currentIndex]);
+
+  useEffect(() => {
+    if (!voiceOn || !speechSynthSupported) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(question.q);
+    utterance.rate = 0.95;
+    window.speechSynthesis.speak(utterance);
+    // eslint-disable-next-line
+  }, [currentIndex, voiceOn]);
+
+  useEffect(() => {
+    return () => {
+      if (speechSynthSupported) window.speechSynthesis.cancel();
+      if (streamRef.current) streamRef.current.getTracks().forEach((t) => t.stop());
+    };
+  }, []);
+
+  async function toggleCamera() {
+    if (cameraOn) {
+      if (streamRef.current) streamRef.current.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+      setCameraOn(false);
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      streamRef.current = stream;
+      if (videoRef.current) videoRef.current.srcObject = stream;
+      setCameraOn(true);
+    } catch (err) {
+      alert("Could not access the camera. Check your browser's camera permission for this page.");
+    }
+  }
+
+  return (
+    <div className="card">
+      <div className="progress-track"><div className="progress-fill" style={{ width: progressPct + "%" }} /></div>
+
+      <div className="session-header">
+        <div className="eyebrow">Q.{String(currentIndex + 1).padStart(2, "0")} / {questions.length} · {question.domain}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          {speechSynthSupported && (
+            <button className={"mic-btn" + (voiceOn ? " on" : "")} title="Read question aloud" onClick={() => setVoiceOn((v) => !v)}>
+              {voiceOn ? "🔊" : "🔈"}
+            </button>
+          )}
+          <button className={"mic-btn" + (cameraOn ? " on" : "")} title="Camera on/off" onClick={toggleCamera}>
+            {cameraOn ? "📹" : "🚫"}
+          </button>
+          <div className="timer-ring">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="26" stroke="var(--panel-line)" strokeWidth="4" fill="none" />
+              <circle cx="30" cy="30" r="26" stroke={secondsLeft <= 10 ? "var(--rust)" : "var(--amber)"} strokeWidth="4" fill="none"
+                strokeDasharray={circumference} strokeDashoffset={dashOffset} strokeLinecap="round" transform="rotate(-90 30 30)" />
+            </svg>
+            <div className="timer-value mono">{secondsLeft}</div>
+          </div>
+        </div>
+      </div>
+
+      {cameraOn && (
+        <div className="camera-preview">
+          <video ref={videoRef} autoPlay muted playsInline></video>
+          <span className="camera-note">Camera preview only — not recorded or analyzed.</span>
+        </div>
+      )}
+
+      <h2 className="display" style={{ fontSize: 22, fontWeight: 500, lineHeight: 1.4 }}>{question.q}</h2>
+
+      {current.phase !== "reviewed" && (
+        <React.Fragment>
+          <div className="hint-row">
+            <button className="hint-btn" onClick={() => setShowHint((v) => !v)}>💡 {showHint ? "Hide hint" : "Show hint"}</button>
+          </div>
+          {showHint && <div className="hint-box">💡 {buildHint(question.a)}</div>}
+
+          <textarea placeholder="Type your answer here — or use the mic to speak it out loud."
+            value={current.answerText} onChange={(e) => updateAnswerText(currentIndex, e.target.value)}
+            disabled={current.phase === "evaluating"} />
+          <div className="btn-row">
+            <button className="primary-btn" disabled={current.phase === "evaluating"} onClick={onSubmit}>
+              {current.phase === "evaluating" ? "Evaluating…" : "Submit answer"} →
+            </button>
+            {speechSupported && (
+              <button className={"mic-btn" + (listening ? " on" : "")} onClick={toggleListening}>
+                {listening ? "🔇 Stop" : "🎙️ Speak"}
+              </button>
+            )}
+          </div>
+        </React.Fragment>
+      )}
+
+      {current.phase === "reviewed" && (
+        <div className="feedback-box">
+          <div className="score-badge" style={{ color: verdictColor(current.overall ?? current.score) }}>
+            {current.overall ?? current.score}/10 — {current.verdict}
+          </div>
+          <div className="subscore-row">
+            <div className="subscore"><span className="subscore-label">Technical</span><span className="subscore-value">{current.technicalScore}/10</span></div>
+            <div className="subscore"><span className="subscore-label">Communication</span><span className="subscore-value">{current.communicationScore}/10</span></div>
+            <div className="subscore"><span className="subscore-label">Confidence</span><span className="subscore-value">{current.confidenceScore}/10</span></div>
+          </div>
+          <p style={{ marginTop: 14, fontSize: 14 }}>{current.feedback}</p>
+          <div style={{ marginTop: 14, fontSize: 13, color: "var(--chalk-dim)" }}>
+            <strong style={{ color: "var(--chalk)" }}>Model answer: </strong>{current.modelAnswer}
+          </div>
+          <button className="primary-btn" style={{ marginTop: 18 }} onClick={onNext}>
+            {currentIndex < questions.length - 1 ? "Next question" : "View report"} →
+          </button>
+        </div>
+      )}
+
+      <div className="ledger">
+        {results.map((r, i) => (
+          <div key={i} className="ledger-item" style={{
+            borderColor: i === currentIndex ? "var(--amber)" : "var(--panel-line)",
+            color: r.phase === "reviewed" ? verdictColor(r.overall ?? r.score) : "var(--chalk-dim)",
+          }}>
+            {r.phase === "reviewed" ? (r.overall ?? r.score) : i + 1}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function average(arr, key) {
+  if (arr.length === 0) return 0;
+  return arr.reduce((s, r) => s + (r[key] || 0), 0) / arr.length;
+}
+
+function Report({ questions, results, candidateName, onRestart }) {
+  const avg = average(results, "overall") || average(results, "score");
+  const techAvg = average(results, "technicalScore");
+  const commAvg = average(results, "communicationScore");
+  const confAvg = average(results, "confidenceScore");
+
+  let overallRating = "Weak";
+  if (avg >= 8) overallRating = "Excellent";
+  else if (avg >= 6) overallRating = "Good";
+  else if (avg >= 4) overallRating = "Needs Improvement";
+
+  const byDomain = {};
+  results.forEach((r, i) => {
+    const dom = questions[i].domain;
+    if (!byDomain[dom]) byDomain[dom] = [];
+    byDomain[dom].push(r.overall ?? r.score ?? 0);
+  });
+
+  const allStrengths = [...new Set(results.flatMap((r) => r.strengths || []))].slice(0, 6);
+  const allWeaknesses = [...new Set(results.flatMap((r) => r.weaknesses || []))].slice(0, 6);
+
+  function downloadPDF() {
+    const doc = new jsPDF();
+    const marginX = 14;
+    let y = 20;
+    doc.setFontSize(18); doc.text("AI Interview Prep — Mark Sheet", marginX, y); y += 10;
+    doc.setFontSize(11);
+    doc.text("Candidate: " + (candidateName || "N/A"), marginX, y); y += 6;
+    doc.text("Date: " + new Date().toLocaleDateString(), marginX, y); y += 6;
+    doc.text("Overall Rating: " + overallRating + " (" + avg.toFixed(1) + "/10)", marginX, y); y += 6;
+    doc.text("Technical: " + techAvg.toFixed(1) + "  |  Communication: " + commAvg.toFixed(1) + "  |  Confidence: " + confAvg.toFixed(1), marginX, y);
+    y += 12;
+
+    if (allStrengths.length > 0) {
+      doc.setFontSize(13); doc.text("Strengths", marginX, y); y += 7;
+      doc.setFontSize(10);
+      allStrengths.forEach((s) => { const lines = doc.splitTextToSize("- " + s, 180); doc.text(lines, marginX, y); y += lines.length * 6; });
+      y += 6;
+    }
+    if (allWeaknesses.length > 0) {
+      doc.setFontSize(13); doc.text("Areas to improve", marginX, y); y += 7;
+      doc.setFontSize(10);
+      allWeaknesses.forEach((w) => { const lines = doc.splitTextToSize("- " + w, 180); doc.text(lines, marginX, y); y += lines.length * 6; });
+      y += 6;
+    }
+
+    doc.setFontSize(13);
+    if (y > 260) { doc.addPage(); y = 20; }
+    doc.text("Question-by-question", marginX, y); y += 8;
+    doc.setFontSize(10);
+    questions.forEach((q, i) => {
+      const r = results[i];
+      if (y > 265) { doc.addPage(); y = 20; }
+      const qLines = doc.splitTextToSize("Q" + (i + 1) + ". [" + (r.overall ?? r.score) + "/10] " + q.q, 180);
+      doc.text(qLines, marginX, y); y += qLines.length * 6 + 2;
+      if (y > 270) { doc.addPage(); y = 20; }
+      const fbLines = doc.splitTextToSize("Feedback: " + (r.feedback || "-"), 180);
+      doc.text(fbLines, marginX, y); y += fbLines.length * 6 + 8;
+    });
+
+    doc.save((candidateName || "interview").replace(/\s+/g, "_") + "-report.pdf");
+  }
+
+  return (
+    <div className="card">
+      <div className="eyebrow">Mark sheet — {candidateName || "Candidate"}</div>
+      <h2 className="display" style={{ fontSize: 44, margin: "10px 0 4px" }}>
+        {avg.toFixed(1)} <span style={{ fontSize: 18, color: "var(--chalk-dim)" }}>/ 10 — {overallRating}</span>
+      </h2>
+
+      <div className="score-grid">
+        <div className="score-card"><div className="score-card-label">Technical</div><div className="score-card-value" style={{ color: verdictColor(techAvg) }}>{techAvg.toFixed(1)}</div></div>
+        <div className="score-card"><div className="score-card-label">Communication</div><div className="score-card-value" style={{ color: verdictColor(commAvg) }}>{commAvg.toFixed(1)}</div></div>
+        <div className="score-card"><div className="score-card-label">Confidence</div><div className="score-card-value" style={{ color: verdictColor(confAvg) }}>{confAvg.toFixed(1)}</div></div>
+        <div className="score-card"><div className="score-card-label">Overall</div><div className="score-card-value" style={{ color: verdictColor(avg) }}>{avg.toFixed(1)}</div></div>
+      </div>
+
+      {(allStrengths.length > 0 || allWeaknesses.length > 0) && (
+        <div className="sw-grid">
+          <div>
+            <div className="eyebrow" style={{ color: "var(--teal)" }}>Strengths</div>
+            <ul className="sw-list">{allStrengths.map((s, i) => <li key={i}>{s}</li>)}</ul>
+          </div>
+          <div>
+            <div className="eyebrow" style={{ color: "var(--rust)" }}>Areas to improve</div>
+            <ul className="sw-list">{allWeaknesses.map((w, i) => <li key={i}>{w}</li>)}</ul>
+          </div>
+        </div>
+      )}
+
+      <div style={{ marginTop: 10 }}>
+        <div className="eyebrow" style={{ color: "var(--chalk-dim)", marginBottom: 6 }}>By topic</div>
+        {Object.entries(byDomain).map(([dom, scores]) => {
+          const domAvg = scores.reduce((a, b) => a + b, 0) / scores.length;
+          return (
+            <div className="report-row" key={dom}>
+              <span style={{ fontSize: 14 }}>{dom}</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div className="bar-track"><div className="bar-fill" style={{ width: (domAvg * 10) + "%", background: verdictColor(domAvg) }} /></div>
+                <span className="mono" style={{ fontSize: 13, width: 34 }}>{domAvg.toFixed(1)}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ marginTop: 28 }}>
+        <div className="eyebrow" style={{ color: "var(--chalk-dim)", marginBottom: 10 }}>Question-by-question</div>
+        {questions.map((q, i) => (
+          <div key={i} style={{ borderBottom: "1px solid var(--panel-line)", padding: "14px 0" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+              <div style={{ fontSize: 14, maxWidth: 560 }}>{q.q}</div>
+              <div className="mono" style={{ color: verdictColor(results[i].overall ?? results[i].score), fontWeight: 600 }}>{results[i].overall ?? results[i].score}/10</div>
+            </div>
+            <div style={{ fontSize: 13, color: "var(--chalk-dim)", marginTop: 6 }}>{results[i].feedback}</div>
+          </div>
+        ))}
+      </div>
+
+      <div className="btn-row" style={{ marginTop: 24 }}>
+        <button className="start-btn" onClick={onRestart}>↺ Start a new session</button>
+        <button className="primary-btn" onClick={downloadPDF}>⬇ Download PDF report</button>
+      </div>
+    </div>
+  );
+}
+
+function HistoryScreen({ history, analytics }) {
+  const [expandedId, setExpandedId] = useState(null);
+  return (
+    <div className="card">
+      <div className="eyebrow">Performance analytics</div>
+      <h2 className="display" style={{ fontSize: 28, margin: "8px 0 18px" }}>Your progress</h2>
+
+      {analytics && (
+        <React.Fragment>
+          <div className="streak-row">
+            <div className="streak-card">🔥<div><div className="streak-value">{analytics.currentStreak}</div><div className="streak-label">day streak</div></div></div>
+            <div className="streak-card">🏆<div><div className="streak-value">{analytics.longestStreak}</div><div className="streak-label">best streak</div></div></div>
+            <div className="streak-card"><div><div className="streak-value">{analytics.totalSessions}</div><div className="streak-label">sessions done</div></div></div>
+            <div className="streak-card"><div><div className="streak-value">{analytics.overallAverageAllTime}</div><div className="streak-label">avg score (all-time)</div></div></div>
+          </div>
+
+          {analytics.perTopic && analytics.perTopic.length > 0 && (
+            <div style={{ marginTop: 26 }}>
+              <div className="eyebrow" style={{ color: "var(--chalk-dim)", marginBottom: 10 }}>Performance by topic</div>
+              {analytics.perTopic.map((t) => (
+                <div className="report-row" key={t.domain}>
+                  <span style={{ fontSize: 14 }}>{t.domain} <span style={{ color: "var(--chalk-dim)", fontSize: 12 }}>({t.attempts} attempts)</span></span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div className="bar-track"><div className="bar-fill" style={{ width: (t.average * 10) + "%", background: verdictColor(t.average) }} /></div>
+                    <span className="mono" style={{ fontSize: 13, width: 34 }}>{t.average.toFixed(1)}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </React.Fragment>
+      )}
+
+      <div style={{ marginTop: 30 }}>
+        <div className="eyebrow" style={{ color: "var(--chalk-dim)", marginBottom: 10 }}>Session history</div>
+        {history.length === 0 && <div style={{ color: "var(--chalk-dim)", fontSize: 14 }}>No sessions completed yet — go finish one!</div>}
+        {history.map((s) => {
+          const isOpen = expandedId === s.id;
+          return (
+            <div key={s.id} style={{ borderBottom: "1px solid var(--panel-line)" }}>
+              <div className="history-item" style={{ cursor: "pointer", alignItems: "center" }} onClick={() => setExpandedId(isOpen ? null : s.id)}>
+                <span>{s.candidateName}</span>
+                <span className="mono" style={{ color: verdictColor(s.average) }}>{s.average}/10</span>
+                <span style={{ color: "var(--chalk-dim)" }}>{new Date(s.timestamp).toLocaleString()}</span>
+                <span>{isOpen ? "⌃" : "⌄"}</span>
+              </div>
+              {isOpen && (
+                <div style={{ padding: "6px 0 16px" }}>
+                  {(s.results || []).map((r, i) => (
+                    <div key={i} style={{ fontSize: 13, padding: "8px 0", borderTop: "1px dashed var(--panel-line)" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
+                        <span style={{ maxWidth: 500 }}>{r.domain ? "[" + r.domain + "] " : ""}{r.question}</span>
+                        <span className="mono" style={{ color: verdictColor(r.overall ?? r.score) }}>{(r.overall ?? r.score)}/10</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   PART 6 — APP (top-level state + screens)
+   ============================================================ */
+function App() {
+  const [screen, setScreen] = useState("setup");
+  const [studyTopicName, setStudyTopicName] = useState(null);
+  const [history, setHistory] = useState(getHistory());
+  const [analytics, setAnalytics] = useState(computeAnalytics(getHistory()));
+
+  const [theme, setTheme] = useState(localStorage.getItem("interviewPrepTheme") || "dark");
+
+  const topics = Object.keys(questionBank).map((name) => ({
+    name, count: questionBank[name].length, hasVideo: Boolean(topicResources[name]),
+  }));
+
+  const [candidateName, setCandidateName] = useState("");
+  const [selectedTopics, setSelectedTopics] = useState([topics[0] ? topics[0].name : ""]);
+  const [difficulty, setDifficulty] = useState("Medium");
+  const [questionCount, setQuestionCount] = useState(5);
+  const [loadingSetup, setLoadingSetup] = useState(false);
+
+  const [questions, setQuestions] = useState([]);
+  const [results, setResults] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [secondsLeft, setSecondsLeft] = useState(0);
+
+  const [listening, setListening] = useState(false);
+  const recognitionRef = useRef(null);
+  const speechSupported = typeof window !== "undefined" && (window.SpeechRecognition || window.webkitSpeechRecognition);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("interviewPrepTheme", theme);
+  }, [theme]);
+
+  function refreshHistoryAndAnalytics() {
+    const h = getHistory();
+    setHistory(h);
+    setAnalytics(computeAnalytics(h));
+  }
+
+  function openStudy(name) { setStudyTopicName(name); setScreen("study"); }
+  function closeStudy() { setStudyTopicName(null); setScreen("setup"); }
+  function toggleTopic(name) {
+    setSelectedTopics((prev) => (prev.includes(name) ? prev.filter((t) => t !== name) : [...prev, name]));
+  }
+
+  function startSession() {
+    if (selectedTopics.length === 0) return;
+    setLoadingSetup(true);
+    let pool = [];
+    selectedTopics.forEach((topic) => {
+      (questionBank[topic] || []).forEach((item) => pool.push({ domain: topic, ...item }));
+    });
+    if (difficulty !== "Any") {
+      const filtered = pool.filter((q) => q.difficulty === difficulty);
+      if (filtered.length > 0) pool = filtered;
+    }
+    const chosen = shuffle(pool).slice(0, questionCount);
+    setLoadingSetup(false);
+    if (chosen.length === 0) { alert("No questions found for this combination — try a different difficulty."); return; }
+    beginSession(chosen);
+  }
+
+  function beginSession(qs) {
+    setQuestions(qs);
+    setResults(qs.map(() => ({
+      phase: "answering", answerText: "", score: null, technicalScore: null,
+      communicationScore: null, confidenceScore: null, overall: null,
+      verdict: null, feedback: null, modelAnswer: null, strengths: [], weaknesses: [],
+    })));
+    setCurrentIndex(0);
+    setScreen("session");
+  }
+
+  function resetAll() {
+    if (recognitionRef.current) { try { recognitionRef.current.stop(); } catch (e) {} }
+    setListening(false);
+    setScreen("setup");
+    setQuestions([]);
+    setResults([]);
+    setCurrentIndex(0);
+    refreshHistoryAndAnalytics();
+  }
+
+  function updateAnswerText(index, textOrFn) {
+    setResults((prev) => prev.map((r, i) => (i === index ? { ...r, answerText: typeof textOrFn === "function" ? textOrFn(r.answerText) : textOrFn } : r)));
+  }
+
+  useEffect(() => {
+    if (screen !== "session") return;
+    const current = results[currentIndex];
+    if (!current || current.phase !== "answering") return;
+    const duration = DURATIONS[difficulty] || 90;
+    setSecondsLeft(duration);
+    const interval = setInterval(() => {
+      setSecondsLeft((prev) => {
+        if (prev <= 1) { clearInterval(interval); submitAnswer(); return 0; }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+    // eslint-disable-next-line
+  }, [currentIndex, screen, results[currentIndex] && results[currentIndex].phase]);
+
+  function submitAnswer() {
+    const current = results[currentIndex];
+    if (!current || current.phase !== "answering") return;
+    if (listening) toggleListening();
+    setResults((prev) => prev.map((r, i) => (i === currentIndex ? { ...r, phase: "evaluating" } : r)));
+    const q = questions[currentIndex];
+
+    setTimeout(() => {
+      const evalResult = localScore(current.answerText, q.a, q.domain);
+      setResults((prev) => prev.map((r, i) => (i === currentIndex ? {
+        ...r, phase: "reviewed", score: evalResult.overall, technicalScore: evalResult.technicalScore,
+        communicationScore: evalResult.communicationScore, confidenceScore: evalResult.confidenceScore,
+        overall: evalResult.overall, verdict: evalResult.verdict, feedback: evalResult.feedback,
+        modelAnswer: evalResult.modelAnswer || q.a, strengths: evalResult.strengths || [], weaknesses: evalResult.weaknesses || [],
+      } : r)));
+    }, 400);
+  }
+
+  function goNext() {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex((i) => i + 1);
+    } else {
+      const fullResults = questions.map((q, i) => ({ domain: q.domain, question: q.q, ...results[i] }));
+      const count = fullResults.length;
+      const avgOf = (key) => (count > 0 ? Number((fullResults.reduce((s, r) => s + (r[key] || 0), 0) / count).toFixed(2)) : 0);
+      const entry = {
+        id: Date.now(), candidateName: candidateName || "Anonymous Candidate", timestamp: new Date().toISOString(),
+        results: fullResults, average: avgOf("overall") || avgOf("score"),
+        technicalAvg: avgOf("technicalScore"), communicationAvg: avgOf("communicationScore"), confidenceAvg: avgOf("confidenceScore"),
+      };
+      pushHistoryEntry(entry);
+      refreshHistoryAndAnalytics();
+      setScreen("report");
+    }
+  }
+
+  function toggleListening() {
+    if (!speechSupported) return;
+    if (listening) { recognitionRef.current && recognitionRef.current.stop(); setListening(false); return; }
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SR();
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.lang = "en-IN";
+    recognition.onresult = (e) => {
+      let transcript = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) transcript += e.results[i][0].transcript;
+      updateAnswerText(currentIndex, (prevText) => (prevText ? prevText + " " + transcript : transcript));
+    };
+    recognition.onerror = () => setListening(false);
+    recognition.onend = () => setListening(false);
+    try { recognition.start(); recognitionRef.current = recognition; setListening(true); } catch (e) { setListening(false); }
+  }
+
+  const duration = DURATIONS[difficulty] || 90;
+
+  return (
+    <div className="app-shell">
+      <div className="shell-inner">
+        <div className="top-header">
+          <div>
+            <div className="eyebrow">AI Interview Prep · BTech CSE · Standalone</div>
+            <h1 className="display" style={{ fontSize: 34, fontWeight: 600, margin: "8px 0 0" }}>Mohit Raj — Viva Session</h1>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {candidateName && screen !== "setup" && <div className="candidate-tag">Candidate: {candidateName}</div>}
+            <button className="nav-icon-btn" title="History & analytics" onClick={() => {
+              if (screen === "history") setScreen("setup");
+              else { refreshHistoryAndAnalytics(); setScreen("history"); }
+            }}>{screen === "history" ? "🏠" : "📊"}</button>
+            <button className="nav-icon-btn" title="Light/Dark mode" onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}>
+              {theme === "dark" ? "☀️" : "🌙"}
+            </button>
+          </div>
+        </div>
+
+        <div style={{ marginTop: 26 }}>
+          {screen === "setup" && (
+            <Setup topics={topics} candidateName={candidateName} setCandidateName={setCandidateName}
+              selectedTopics={selectedTopics} toggleTopic={toggleTopic} difficulty={difficulty} setDifficulty={setDifficulty}
+              questionCount={questionCount} setQuestionCount={setQuestionCount} loading={loadingSetup}
+              onStart={startSession} onOpenStudy={openStudy} />
+          )}
+          {screen === "study" && studyTopicName && <StudyTopic topicName={studyTopicName} onBack={closeStudy} />}
+          {screen === "session" && questions.length > 0 && (
+            <Session questions={questions} results={results} currentIndex={currentIndex} secondsLeft={secondsLeft}
+              duration={duration} updateAnswerText={updateAnswerText} onSubmit={submitAnswer} onNext={goNext}
+              speechSupported={speechSupported} listening={listening} toggleListening={toggleListening} />
+          )}
+          {screen === "report" && <Report questions={questions} results={results} candidateName={candidateName} onRestart={resetAll} />}
+          {screen === "history" && <HistoryScreen history={history} analytics={analytics} />}
+        </div>
+
+        {screen !== "setup" && screen !== "study" && screen !== "history" && (
+          <div style={{ marginTop: 20 }}>
+            <span className="link-reset" onClick={resetAll}>↺ abandon session and start over</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+</script>
+</body>
+</html>
